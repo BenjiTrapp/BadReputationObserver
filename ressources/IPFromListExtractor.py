@@ -16,7 +16,7 @@ class IPExtractor(object):
         self.__BAD_IP_LIST_NAME = list_name
         self.__TEMP_BAD_IP_LIST_NAME = self.__BAD_IP_LIST_NAME + ".tmp"
         self.__REGEX_VALIDATE_IP = r'(?:\d{1,3}\.){3}\d{1,3}'
-        self.__REGEX_CHECK_IF_IP_IS_VALID = r'^((\d{1,2}|1\d{2}|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d{2}|2[0-4]\d|25[0-5])$'
+        self.__REGEX_CHECK_IF_IP_VALID = r'^((\d{1,2}|1\d{2}|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d{2}|2[0-4]\d|25[0-5])$'
 
     def run_ip_extractor(self):
         logging.info("##### Extracting IPS from .txt-List #####")
@@ -26,7 +26,7 @@ class IPExtractor(object):
         return "Done. All Lists were refreshed!\n" + str(info)
 
     def check_reputation_of_ip(self, ip, ):
-        if not re.match(self.__REGEX_CHECK_IF_IP_IS_VALID, str(ip)):
+        if not re.match(self.__REGEX_CHECK_IF_IP_VALID, str(ip)):
             return "The passed ip: " + str(ip) + " is malformed. Currently only valid IPV4 Addresses are allowed!"
 
         result = "reputation: "
@@ -83,8 +83,8 @@ class IPExtractor(object):
                 ips_seen.add(line)
             else:
                 count_doubled_ips += 1
-
         outfile.close()
         os.remove(self.__TEMP_BAD_IP_LIST_NAME)
-        return "A total of: " + str(len(ips_seen)) + " IPs have been seen with " \
+
+        return "A total of: " + str(len(ips_seen)) + " IPs has been seen with " \
                + str(count_doubled_ips) + " doubled ips"

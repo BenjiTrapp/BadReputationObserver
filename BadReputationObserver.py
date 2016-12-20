@@ -4,6 +4,8 @@ from ressources.IPFromListExtractor import IPExtractor
 from ressources.TargetInfoRetriever import TargetInfoRetriever
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
+app.config['SECRET_KEY'] = 'my#super#duper#awesome#secret-key'
 
 
 class BadReputationObserver(object):
