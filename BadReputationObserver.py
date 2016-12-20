@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 
-from BRO.ressources.IPFromListExtractor import IPExtractor
-from BRO.ressources.TargetInfoRetriever import TargetInfoRetriever
+from ressources.IPFromListExtractor import IPExtractor
+from ressources.TargetInfoRetriever import TargetInfoRetriever
 
 app = Flask(__name__)
 

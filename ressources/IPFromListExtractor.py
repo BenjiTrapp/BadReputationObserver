@@ -5,14 +5,14 @@ import requests
 
 from urllib.error import HTTPError
 from contextlib2 import closing
-from BRO.ressources.BadReputationLists import badReputationIPLists
+from ressources.BadReputationLists import badReputationIPLists
 
 logging.basicConfig(level = logging.INFO)
 logger = logging.getLogger(__name__)
 
 
 class IPExtractor(object):
-    def __init__(self, list_name = 'bad_reputation_ip_list.txt'):
+    def __init__(self, list_name = 'bad_reputation_ip_list.dat'):
         self.__BAD_IP_LIST_NAME = list_name
         self.__TEMP_BAD_IP_LIST_NAME = self.__BAD_IP_LIST_NAME + ".tmp"
         self.__REGEX_VALIDATE_IP = r'(?:\d{1,3}\.){3}\d{1,3}'
