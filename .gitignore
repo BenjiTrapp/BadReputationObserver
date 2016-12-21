@@ -1,3 +1,4 @@
 *.pyc
+resources/*.pyc
 *.idea
 *.dat

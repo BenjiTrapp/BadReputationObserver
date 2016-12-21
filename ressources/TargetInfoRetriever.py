@@ -2,6 +2,8 @@ import logging
 import re
 import requests
 
+
+
 logging.basicConfig(level = logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -9,6 +11,7 @@ logger = logging.getLogger(__name__)
 class TargetInfoRetriever(object):
     def __init__(self):
             self.__BAD_IP = None
+            self.__NEW_LINE = '\n'
 
     def retrieve_target_information(self, ip):
         global tracert, nmap, geoip, reversed_dns, http_headers
@@ -39,15 +42,10 @@ class TargetInfoRetriever(object):
 
         return self.__get_target_info_as_dictionary()
 
+    # TODO: Prettify the output
     def __get_target_info_as_dictionary(self):
-        logging.debug("ReverseDNS: " + str(reversed_dns) +
-                      " GeoIP: " + str(geoip) +
-                      " NMAP: " + str(nmap) +
-                      " Tracert: " + str(tracert) +
-                      " HTTPHeaders: " + str(http_headers))
-
-        return {"Reverse DNS":  str(reversed_dns),
-                "GeoIP":        str(geoip),
-                "NMAP":         str(nmap),
-                "Trace Route":  str(tracert),
-                "HTTP Headers": str(http_headers)}
+        return {"Reverse DNS":  str(reversed_dns.split(self.__NEW_LINE)),
+                "GeoIP":        str(geoip.split(self.__NEW_LINE)),
+                "NMAP":         str(nmap.split(self.__NEW_LINE)),
+                "Trace Route":  str(tracert.split(self.__NEW_LINE)),
+                "HTTP Headers": str(http_headers.split(self.__NEW_LINE))}
