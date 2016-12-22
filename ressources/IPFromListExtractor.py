@@ -12,18 +12,19 @@ logger = logging.getLogger(__name__)
 
 
 class IPExtractor(object):
-    def __init__(self, list_name = 'bad_reputation_ip_list.dat'):
+    __REGEX_VALIDATE_IP = r'(?:\d{1,3}\.){3}\d{1,3}'
+    __REGEX_CHECK_IF_IP_VALID = r'^((\d{1,2}|1\d{2}|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d{2}|2[0-4]\d|25[0-5])$'
+
+    def __init__(self, list_name = '../lists/bad_reputation_ip_list.dat'):
         self.__BAD_IP_LIST_NAME = list_name
-        self.__TEMP_BAD_IP_LIST_NAME = self.__BAD_IP_LIST_NAME + ".tmp"
-        self.__REGEX_VALIDATE_IP = r'(?:\d{1,3}\.){3}\d{1,3}'
-        self.__REGEX_CHECK_IF_IP_VALID = r'^((\d{1,2}|1\d{2}|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d{2}|2[0-4]\d|25[0-5])$'
+        self.__TEMP_BAD_IP_LIST_NAME = self.__BAD_IP_LIST_NAME + ".lists"
 
     def run_ip_extractor(self):
         logging.info("##### Extracting IPS from .txt-List #####")
         self.__extract_ips_from_txt_list()
         logging.info("##### Remove doubled IPS #####")
         info = self.__remove_doubled_ips()
-        return "Done. All Lists were refreshed!\n" + str(info)
+        return "Done. All Lists were refreshed! " + str(info)
 
     def check_reputation_of_ip(self, ip, ):
         if not re.match(self.__REGEX_CHECK_IF_IP_VALID, str(ip)):

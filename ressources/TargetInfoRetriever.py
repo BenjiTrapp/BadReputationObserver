@@ -15,7 +15,6 @@ class TargetInfoRetriever(object):
     def __init__(self):
             self.__BAD_IP = None
 
-
     def retrieve_target_information(self, ip):
         global tracert, nmap, geoip, reversed_dns, http_headers
 
