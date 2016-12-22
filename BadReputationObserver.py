@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 
 from ressources.IPFromListExtractor import IPExtractor
 from ressources.TargetInfoRetriever import TargetInfoRetriever
+from ressources.TorListExtractor import TorListExtractor
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -29,6 +30,21 @@ class BadReputationObserver(object):
     @app.route('/api/target_info/<ip>', methods = ['GET'])
     def check_target_info_of_ip(ip):
         return jsonify(TargetInfoRetriever().retrieve_target_information(ip))
+
+    @app.route('/api/tor_node/refresh', methods = ['POST'])
+    def refresh_tor_nodes():
+        TorListExtractor(refresh_lists = True)
+        return "All lists were refreshed"
+
+    @app.route('/api/tor_node/<ip>', methods = ['GET'])
+    def check_if_tor_nodes(ip):
+        t = TorListExtractor()
+        return jsonify(t.check_if_ip_is_tor_node(ip))
+
+    @app.route('/api/tor_exit_node/<ip>', methods = ['GET'])
+    def check_if_tor_exit_nodes(ip):
+        t = TorListExtractor()
+        return jsonify(t.check_if_ip_is_tor_node(ip))
 
 
 if __name__ == '__main__':
