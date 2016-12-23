@@ -9,8 +9,8 @@ logger = logging.getLogger(__name__)
 
 
 class TorListExtractor:
-    __TOR_EXIT_NODES_FILE_NAME = 'Tor_Exit_Nodes.dat'
-    __TOR_ALL_NODES_FILE_NAME = 'Tor_All_Nodes.dat'
+    __TOR_EXIT_NODES_FILE_NAME = 'lists/Tor_Exit_Nodes.dat'
+    __TOR_ALL_NODES_FILE_NAME = 'lists/Tor_All_Nodes.dat'
     __TOR_EXIT_NODES_LIST_URL = 'https://torstatus.blutmagie.de/ip_list_exit.php/Tor_ip_list_EXIT.csv'
     __TOR_ALL_NODES_LIST_URL = 'https://torstatus.blutmagie.de/ip_list_all.php/Tor_ip_list_ALL.csv'
     __REGEX_CHECK_IF_IP_VALID = r'^((\d{1,2}|1\d{2}|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d{2}|2[0-4]\d|25[0-5])$'

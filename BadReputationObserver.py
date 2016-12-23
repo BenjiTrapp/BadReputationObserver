@@ -38,14 +38,11 @@ class BadReputationObserver(object):
 
     @app.route('/api/tor_node/<ip>', methods = ['GET'])
     def check_if_tor_nodes(ip):
-        t = TorListExtractor()
-        return jsonify(t.check_if_ip_is_tor_node(ip))
+        return jsonify(TorListExtractor().check_if_ip_is_tor_node(ip))
 
     @app.route('/api/tor_exit_node/<ip>', methods = ['GET'])
     def check_if_tor_exit_nodes(ip):
-        t = TorListExtractor()
-        return jsonify(t.check_if_ip_is_tor_node(ip))
-
+        return jsonify(TorListExtractor().check_if_ip_is_tor_node(ip))
 
 if __name__ == '__main__':
     app.run(debug = False, host = '0.0.0.0', threaded = True)

@@ -15,7 +15,7 @@ class IPExtractor(object):
     __REGEX_VALIDATE_IP = r'(?:\d{1,3}\.){3}\d{1,3}'
     __REGEX_CHECK_IF_IP_VALID = r'^((\d{1,2}|1\d{2}|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d{2}|2[0-4]\d|25[0-5])$'
 
-    def __init__(self, list_name = '../lists/bad_reputation_ip_list.dat'):
+    def __init__(self, list_name = 'lists/bad_reputation_ip_list.dat'):
         self.__BAD_IP_LIST_NAME = list_name
         self.__TEMP_BAD_IP_LIST_NAME = self.__BAD_IP_LIST_NAME + ".lists"
 
