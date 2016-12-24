@@ -1,11 +1,12 @@
-import os
 import logging
+import os
 import re
-import requests
-
 from urllib.error import HTTPError
+
+import requests
 from contextlib2 import closing
-from ressources.BadReputationLists import badReputationIPLists
+
+from lists.BadReputationLists import badReputationIPLists
 
 logging.basicConfig(level = logging.INFO)
 logger = logging.getLogger(__name__)

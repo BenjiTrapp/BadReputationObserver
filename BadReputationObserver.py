@@ -1,8 +1,8 @@
 from flask import Flask, jsonify
 
-from ressources.IPFromListExtractor import IPExtractor
-from ressources.TargetInfoRetriever import TargetInfoRetriever
-from ressources.TorListExtractor import TorListExtractor
+from IPReputation.IPFromListExtractor import IPExtractor
+from TargetInfoRetriever.TargetInfoRetriever import TargetInfoRetriever
+from Tor.TorListExtractor import TorListExtractor
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
